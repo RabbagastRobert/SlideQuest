@@ -1,0 +1,74 @@
+/* IMPORTS */
+
+/* ROOT */
+
+:root {
+  --page-bg-light: #bbdce5;
+  --container-bg-light: #eceedf;
+  --item-bg-light: #d9c4b0;
+  --border-light: #cfab8d;
+}
+
+/* GLOBAL */
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  height: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+p {
+  margin: 1em 0;
+}
+
+body {
+  height: stretch;
+  padding: 1rem;
+  background-color: var(--page-bg-light);
+}
+
+/* UTILITY */
+.fill {
+  height: stretch;
+  display: grid;
+  grid:
+    'header     header' 6rem
+    'nav        main' 1fr
+    'footer     footer' 6rem
+    / 20% auto;
+  gap: 0.5rem;
+}
+
+.container {
+  background-color: var(--container-bg-light);
+  padding: 1rem;
+  border: 2px solid var(--border-light);
+  border-radius: 1rem;
+}
+
+/* HEADER */
+header {
+  grid-area: header;
+}
+
+/* NAVIGATION */
+nav {
+  grid-area: nav;
+}
+
+/* MAIN */
+main {
+  grid-area: main;
+}
+
+/* FOOTER */
+footer {
+  grid-area: footer;
+}
