@@ -1,39 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Template</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="stylesheet" href="styles.css" />
-    <link rel="icon" type="image/png" href="assets/check_box.png" />
-    <script type="module" src="script/main.js"></script>
-  </head>
 
-  <body>
-    <div class="fill">
-      <header class="container"></header>
+<head>
+  <title>Template</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/png" href="assets/check_box.png" />
+  <script type="module" src="script/main.js"></script>
+</head>
 
-      <nav class="container">
-        <!-- Main Navigation -->
-        <ul class="navList">
-          <li><img src="assets/add_box_blue.png" /></li>
-          <li><img src="assets/inventory_blue.png" /></li>
-          <li><img src="assets/settings_blue.png" /></li>
+<body>
+  <div class="fill">
+    <div id="headerCorner"></div>
+
+    <header class="container">
+      <h1>Daily Quests</h1>
+    </header>
+
+    <nav class="container" id="navContainer">
+      <!-- Main Navigation -->
+      <ul class="navList">
+        <li id="navAssignmentAdd"><a href="#"><img src="assets/assignment_add.png" /></a></li>
+        <li id="navAssignmentsActive" class="selected"><a href="#"><img src="assets/assignment.png" /></a></li>
+        <li id="navAssignmentsHistory"><a href="#"><img src="assets/assignment_turned_in.png" /></a></li>
+        <li id="navSettings"><a href="#"><img src="assets/settings_blue.png" /></a></li>
+      </ul>
+    </nav>
+
+    <main class="container" id="mainContainer">
+      <section id="mainContent">
+        <!-- Main section -->
+        <ul id="questList">
+          <li>Quest of Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque deleniti explicabo mollitia,
+            voluptas perspiciatis vel eum animi expedita reprehenderit possimus fuga nesciunt similique ullam ea aperiam
+            illum dolores labore nihil.
+          <li>Quest of Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque deleniti explicabo mollitia,
+            voluptas perspiciatis vel eum animi expedita reprehenderit possimus fuga nesciunt similique ullam ea aperiam
+            illum dolores labore nihil.
+          <li>Quest of Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque deleniti explicabo mollitia,
+            voluptas perspiciatis vel eum animi expedita reprehenderit possimus fuga nesciunt similique ullam ea aperiam
+            illum dolores labore nihil.
+          <li>Quest of Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque deleniti explicabo mollitia,
+            voluptas perspiciatis vel eum animi expedita reprehenderit possimus fuga nesciunt similique ullam ea aperiam
+            illum dolores labore nihil.
+          <li>Quest of Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque deleniti explicabo mollitia,
+            voluptas perspiciatis vel eum animi expedita reprehenderit possimus fuga nesciunt similique ullam ea aperiam
+            illum dolores labore nihil.
+          <li>Quest of Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque deleniti explicabo mollitia,
+            voluptas perspiciatis vel eum animi expedita reprehenderit possimus fuga nesciunt similique ullam ea aperiam
+            illum dolores labore nihil.
+          </li>
         </ul>
-      </nav>
+      </section>
+    </main>
 
-      <main class="container">
-        <section id="hero">
-          <!-- Hero -->
-        </section>
-        <section>
-          <!-- Main section -->
-        </section>
-      </main>
+    <footer class="container">
+      <h3>2025 © Robert "Rabbagast" Larsen</h3>
+    </footer>
+  </div>
+</body>
 
-      <footer class="container">
-        <h3>2025 © Robert "Rabbagast" Larsen</h3>
-      </footer>
-    </div>
-  </body>
 </html>
