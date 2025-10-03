@@ -38,7 +38,7 @@ ul {
 
 body {
   height: stretch;
-  padding: 1rem;
+  padding: 1rem 15%;
   background-color: var(--page-bg-color);
   background-image: var(--page-bg-gradient);
 }
