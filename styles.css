@@ -11,8 +11,9 @@
   --border-color: hsl(50 50% 39%);
   --heading-color: hsl(24 100% 4%);
   --text-color: hsl(49 100% 13%);
+  --dim-text-color: hsl(49 60% 42%);
   --highlight-color: hsl(50 100% 89%);
-  --shadow: 0.2rem 0.2rem 0.2rem hsla(50, 100%, 13%, 50%);
+  --shadow: 4px 3px 6px hsla(50, 100%, 13%, 30%);
 }
 
 /* GLOBAL */
@@ -40,6 +41,7 @@ h2 {
 }
 
 h3 {
+  color: var(--dim-text-color);
   font-size: medium;
 }
 
@@ -76,7 +78,7 @@ body {
     "headerCorner     header" 4rem
     "nav              main"
     ".                main" 1fr
-    ".                footer" 3rem
+    ".                footer" 2.5rem
     / 96px 1fr;
   /* gap: 4px; */
 }
@@ -99,7 +101,7 @@ header {
   border-left: none;
   border-bottom: none;
   border-radius: 0 1rem 0 0;
-  height: 5rem;
+  /* height: 5rem; */
   /* overflow: hidden; */
 }
 
