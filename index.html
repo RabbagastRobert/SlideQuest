@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Template</title>
+  <title>Slide To Do</title>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width" />
   <link rel="stylesheet" href="styles.css" />
@@ -11,11 +11,11 @@
 </head>
 
 <body>
-  <div class="fill">
+  <div class="bodyContainer">
     <div id="headerCorner"></div>
 
     <header class="container">
-      <h1>Daily Quests</h1>
+      <h1 id="pageTitle">Daily Quests</h1>
     </header>
 
     <nav class="container" id="navContainer">
@@ -28,30 +28,10 @@
       </ul>
     </nav>
 
-    <main class="container" id="mainContainer">
-      <section id="mainContent">
-        <!-- Main section -->
-        <ul id="questList">
-          <li>Quest of Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque deleniti explicabo mollitia,
-            voluptas perspiciatis vel eum animi expedita reprehenderit possimus fuga nesciunt similique ullam ea aperiam
-            illum dolores labore nihil.
-          <li>Quest of Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque deleniti explicabo mollitia,
-            voluptas perspiciatis vel eum animi expedita reprehenderit possimus fuga nesciunt similique ullam ea aperiam
-            illum dolores labore nihil.
-          <li>Quest of Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque deleniti explicabo mollitia,
-            voluptas perspiciatis vel eum animi expedita reprehenderit possimus fuga nesciunt similique ullam ea aperiam
-            illum dolores labore nihil.
-          <li>Quest of Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque deleniti explicabo mollitia,
-            voluptas perspiciatis vel eum animi expedita reprehenderit possimus fuga nesciunt similique ullam ea aperiam
-            illum dolores labore nihil.
-          <li>Quest of Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque deleniti explicabo mollitia,
-            voluptas perspiciatis vel eum animi expedita reprehenderit possimus fuga nesciunt similique ullam ea aperiam
-            illum dolores labore nihil.
-          <li>Quest of Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque deleniti explicabo mollitia,
-            voluptas perspiciatis vel eum animi expedita reprehenderit possimus fuga nesciunt similique ullam ea aperiam
-            illum dolores labore nihil.
-          </li>
-        </ul>
+    <main class="container" id="pageContainer">
+      <!-- Main section -->
+      <section id="pageContent">
+        <!-- Page content is loaded through main.js / loadPage() -->
       </section>
     </main>
 
