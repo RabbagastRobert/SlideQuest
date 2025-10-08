@@ -6,14 +6,18 @@
     * Select                    - Quest category
         * Option                - ...existing categories
         * Option                - --- New category ---
-            * Input text        - New category name
-    * Input text                - Quest description
+            * Input text        - New category name if New Category is selected
+    * Textarea                  - Quest description
+    
+    ( *** Not yet implemented
     * Select                    - Quest frequency
         * Option                - Single quest 
         * Option                - Daily 
         * Option                - Weekly
         * Option                - Monthly
             * Select?           - Day of week / Day of month
+    *** )
+
     * Button                    - Add quest
     * Button                    - Cancel
 
@@ -21,36 +25,26 @@
     JAVASCRIPT
     --------
 
-    * const questData           - Get form elements
-    * func  validateQuestData   - Validate and sanitize form data
-    * func  saveQuestData       - Stores quest in Local Storage (until database integration)
     * Event listener            - Quest category change - Show input for new category if new category is selected
-    * Event listener            - Quest frequency change - Show day selector if single quest is not selected
     * Event listener            - Add quest button click - Store quest and redirect to quest list
     * Event listener            - Cancel button - redirect to quest list
 -->
-<h2>Add new quest</h2>
-
-<form id="addQuestForm">
-    <label for="questCategory">
-        Category
+<div class="container">
+    <form id="addQuestForm" class="formGrid">
+        <label for="questCategory">
+            Category
+        </label>
         <select id="questCategory" name="questCategory">
             <option value="__NEW__CATEGORY__">--- New Category ---</option>
         </select>
-    </label>
-    <label for="questDescription">
-        Description
-        <input id="questDescription" name="questDescription" />
-    </label>
-    <label for="questFrequency">
-        Frequency
-        <select id="questFrequency" name="questFrequency">
-            <option value="single">Single quest</option>
-            <option value="daily">Daily quest</option>
-            <option value="weekly">Weekly quest</option>
-            <option value="monthly">Monthly quest</option>
-        </select>
-    </label>
-    <button id="addQuest">Add quest</button>
-    <button id="cancel">Cancel</button>
-</form>
+
+        <label for="questDescription">
+            Description
+        </label>
+        <textarea id="questDescription" name="questDescription" placeholder="Write something to describe your quest!"
+            rows="4"></textarea>
+
+        <button id="cancel">Cancel</button>
+        <button id="addQuest">Add quest</button>
+    </form>
+</div>
