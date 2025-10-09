@@ -38,13 +38,24 @@
             <option value="__NEW__CATEGORY__">--- New Category ---</option>
         </select>
 
+        <label for="newCategoryName" id="newCategoryNameLabel" class="hidden">
+            Category name:
+        </label>
+        <input id="newCategoryName" name="newCategoryName" type="text" maxlength="30" class="hidden" />
+
         <label for="questDescription">
             Description
         </label>
         <textarea id="questDescription" name="questDescription" placeholder="Write something to describe your quest!"
             rows="4"></textarea>
 
-        <button id="cancel">Cancel</button>
-        <button id="addQuest">Add quest</button>
+        <span></span>
+        <div>
+            <button id="cancel">Cancel</button>
+            <button id="addQuest">Add quest</button>
+        </div>
     </form>
+    <div id="addQuestErrorMessage" class="errorMessage hidden">
+        Erororor: Nothing to see here
+    </div>
 </div>

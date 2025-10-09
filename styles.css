@@ -13,6 +13,7 @@
   --text-color: hsl(49 100% 13%);
   --dim-text-color: hsl(49 60% 42%);
   --highlight-color: hsl(50 100% 89%);
+  --error-color: hsl(8 40% 42%);
   --shadow: 4px 3px 6px hsla(50, 100%, 13%, 30%);
 }
 
@@ -84,12 +85,31 @@ body {
 }
 
 .formGrid {
-  /* max-width: 80%; */
+  width: stretch;
   display: grid;
   grid: auto / 1fr 3fr;
-  margin: 2rem;
+  margin: 2rem 2rem 2rem 0;
   gap: 2rem 1rem;
   text-align: right;
+  justify-items: stretch;
+}
+
+.formGrid input {
+  height: 1lh;
+}
+
+.formGrid button {
+  width: 140px;
+  height: 40px;
+}
+
+.errorMessage {
+  color: var(--error-color);
+  font-weight: bolder;
+}
+
+.hidden {
+  display: none;
 }
 
 /* HEADER */
