@@ -84,6 +84,10 @@ body {
   /* gap: 4px; */
 }
 
+.flex {
+  display: flex;
+}
+
 .formGrid {
   width: stretch;
   display: grid;
@@ -106,6 +110,10 @@ body {
 .errorMessage {
   color: var(--error-color);
   font-weight: bolder;
+}
+
+.slideLeft {
+  transform: translateX(-1000px);
 }
 
 .hidden {
@@ -229,15 +237,13 @@ main {
   transition: transform 1s ease-in;
 }
 
-.questList li.complete {
-  transform: translateX(-1000px);
-  filter: hue-rotate(260deg) brightness(180%);
+.questList img {
+  padding: 1rem 0.5rem;
+  width: 32px;
+  height: 32px;
 }
 
 .questList img.archived {
-  padding: 1rem;
-  width: 32px;
-  height: 32px;
   filter: hue-rotate(260deg) brightness(180%);
 }
 
@@ -250,14 +256,22 @@ main {
 }
 
 .questCompleteButton {
-  padding: 1rem;
-  width: 32px;
-  height: 32px;
   filter: grayscale() brightness(150%);
 }
 
 .questCompleteButton:hover {
   filter: unset;
+}
+
+.deleteButton {
+  padding: 1rem;
+  width: 32px;
+  height: 32px;
+  filter: hue-rotate(130deg) brightness(120%);
+}
+
+.deleteButton:hover {
+  filter: hue-rotate(140deg) brightness(180%);
 }
 
 .questCompleteButtonActive {

@@ -239,22 +239,47 @@ function displayActiveQuests() {
             questDescription.textContent = item.description;
             questItem.appendChild(questDescription);
 
+            // Button container
+            const buttonContainer = document.createElement('div');
+            buttonContainer.classList.add('flex');
+
             // Quest competed button
-            const buttonLink = document.createElement('a');
-            buttonLink.href = '#';
+            const questCompleteLink = document.createElement('a');
+            questCompleteLink.href = '#';
 
             const questCompleteButton = document.createElement('img');
             questCompleteButton.classList.add('questCompleteButton');
             questCompleteButton.src = 'assets/assignment_turned_in.png';
 
-            buttonLink.appendChild(questCompleteButton);
-            questItem.appendChild(buttonLink);
+            questCompleteLink.appendChild(questCompleteButton);
+            // questItem.appendChild(questCompleteLink);
 
-            buttonLink.addEventListener('click', () => {
+            questCompleteLink.addEventListener('click', () => {
                 moveQuestToArchive(item.id);
-                questItem.classList.add('complete');
+                questItem.classList.add('slideLeft');
                 setTimeout(() => { questItem.remove() }, 1200)
             });
+
+            // Deletebutton
+            const deleteLink = document.createElement('a');
+            deleteLink.href = '#';
+
+            const deleteButton = document.createElement('img');
+            deleteButton.classList.add('deleteButton');
+            deleteButton.src = 'assets/delete.png';
+
+            deleteLink.appendChild(deleteButton);
+            // questItem.appendChild(deleteLink);
+
+            deleteButton.addEventListener('click', () => {
+                deleteQuest(item.id, false);
+                questItem.classList.add('slideLeft');
+                setTimeout(() => { questItem.remove() }, 1200)
+            });
+
+            buttonContainer.appendChild(questCompleteLink);
+            buttonContainer.appendChild(deleteLink);
+            questItem.appendChild(buttonContainer);
         });
     });
 }
@@ -305,11 +330,27 @@ function displayArchivedQuests() {
 
             // Quest completed image
             const questCompleteImage = document.createElement('img');
-            // questCompleteImage.classList.add('questCompleteButton');
             questCompleteImage.src = 'assets/assignment_turned_in.png';
             questCompleteImage.classList.add('archived');
 
             questItem.appendChild(questCompleteImage);
+
+            // Deletebutton
+            const deleteLink = document.createElement('a');
+            deleteLink.href = '#';
+
+            const deleteButton = document.createElement('img');
+            deleteButton.classList.add('deleteButton');
+            deleteButton.src = 'assets/delete.png';
+
+            deleteLink.appendChild(deleteButton);
+            questItem.appendChild(deleteLink);
+
+            deleteButton.addEventListener('click', () => {
+                deleteQuest(item.id, true);
+                questItem.classList.add('slideLeft');
+                setTimeout(() => { questItem.remove() }, 1200)
+            });
         });
     });
 }
@@ -426,6 +467,28 @@ function moveQuestToArchive(questID) {
             localStorage.setItem('quests', JSON.stringify(data));
             localStorage.setItem('archive', JSON.stringify(archiveData));
 
+            return;
+        }
+    });
+}
+
+/**
+ * Deletes a quest item
+ * @param {string} questID
+ * @param {boolean} fromArchive 
+ */
+function deleteQuest(questID, fromArchive) {
+    const data = fromArchive ? getArchivedQuestsData() : getQuestsData();
+    const categories = Object.keys(data);
+
+    categories.forEach((id) => {
+        const items = data[id].items;
+
+        const questIndex = items.findIndex(((item) => item.id === questID));
+
+        if (questIndex !== -1) {
+            items.splice(questIndex, 1);
+            localStorage.setItem(fromArchive ? 'archive' : 'quests', JSON.stringify(data));
             return;
         }
     });
