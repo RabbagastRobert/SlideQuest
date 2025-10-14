@@ -211,22 +211,52 @@ main {
 
 /* Quests */
 .questList {
-  /* margin: 1rem; */
-  padding: 2rem;
+  padding: 1rem 1rem 3rem 1rem;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 }
 
 .questList li {
-  padding: 1rem;
   background-color: var(--bg-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* padding: 1rem; */
   border: 1px solid var(--border-color);
   border-radius: 0.4rem;
   box-shadow: var(--shadow);
+  transition: transform 1s ease-in;
 }
 
-#questDescription {
+.questList li.complete {
+  transform: translateX(-1000px);
+}
+
+.questDescription {
+  text-align: start;
+  padding: 1rem;
+  height: stretch;
+  width: stretch;
+  border-right: 1px solid var(--border-color);
+}
+
+.questCompleteButton {
+  padding: 1rem;
+  width: 32px;
+  height: 32px;
+  filter: grayscale() brightness(150%);
+}
+
+.questCompleteButton:hover {
+  filter: unset;
+}
+
+.questCompleteButtonActive {
+  filter: hue-rotate(260deg) brightness(180%);
+}
+
+#formQuestDescription {
   resize: none;
 }
 

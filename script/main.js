@@ -134,10 +134,19 @@ function getQuestsData() {
 }
 
 /**
- * Creates a new unique category id
+ * Get archived quests data JSON from local storage and returs the parsed object
+ */
+function getArchivedQuestsData() {
+    const rawData = localStorage.getItem('archive');
+    const data = rawData ? JSON.parse(rawData) : {};
+    return data;
+}
+
+/**
+ * Creates a new unique id
  * @returns random id
  */
-function createNewCategoryID() {
+function createID() {
     const data = getQuestsData();
 
     let id = -1;
@@ -162,12 +171,13 @@ function addQuest(category, description) {
     let categoryID = allCategoryIDs.find((id) => data[id].categoryName === category);
 
     // If category doesn't exist, create it
-    if (!categoryID) categoryID = createNewCategoryID();
+    if (!categoryID) categoryID = createID();
 
     if (!data[categoryID]) data[categoryID] = { categoryName: category, items: [] };
 
     // Add item to category
     data[categoryID].items.push({
+        id: createID(),
         description: description,
         completed: false,
     });
@@ -206,18 +216,44 @@ function displayActiveQuests() {
         // Show a message if category contains no items
         if (!items.length) {
             const questItem = document.createElement('li');
-            questItem.textContent = 'No quests remaining in this category! Why not add a new quest?';
-
             questList.appendChild(questItem);
+
+            const questDescription = document.createElement('div');
+            questDescription.textContent = 'No quests remaining in this category! Why not add a new quest?';
+            questDescription.classList.add('questDescription');
+            questItem.appendChild(questDescription);
+
             return;
         }
 
         // Add each item in category
         items.forEach((item) => {
+            // Quest list item - one for each quest
             const questItem = document.createElement('li');
-            questItem.textContent = item.description;
-
             questList.appendChild(questItem);
+
+            // Quest description
+            const questDescription = document.createElement('div');
+            questDescription.classList.add('questDescription');
+            questDescription.textContent = item.description;
+            questItem.appendChild(questDescription);
+
+            // Quest competed button
+            const buttonLink = document.createElement('a');
+            buttonLink.href = '#';
+
+            const questCompleteButton = document.createElement('img');
+            questCompleteButton.classList.add('questCompleteButton');
+            questCompleteButton.src = 'assets/assignment_turned_in.png';
+
+            buttonLink.appendChild(questCompleteButton);
+            questItem.appendChild(buttonLink);
+
+            buttonLink.addEventListener('click', () => {
+                moveQuestToArchive(item.id);
+                questItem.classList.add('complete');
+                setTimeout(() => { questItem.remove() }, 1200)
+            });
         });
     });
 }
@@ -232,7 +268,7 @@ function setupAddQuestForm() {
     const newCategoryInputLabel = addQuestForm.querySelector('#newCategoryNameLabel');
     const newCategoryInput = addQuestForm.querySelector('#newCategoryName');
 
-    const questDescriptionText = addQuestForm.querySelector('#questDescription');
+    const questDescriptionText = addQuestForm.querySelector('#formQuestDescription');
 
     const cancelButton = addQuestForm.querySelector('#cancel');
     const addQuestButton = addQuestForm.querySelector('#addQuest');
@@ -307,4 +343,34 @@ function setupAddQuestForm() {
 
         loadPage('active');
     })
+}
+
+function moveQuestToArchive(questID) {
+    const data = getQuestsData();
+    const categories = Object.keys(data);
+
+    const archiveData = getArchivedQuestsData();
+
+    categories.forEach((id) => {
+        const { categoryName, items } = data[id];
+
+        const questIndex = items.findIndex(((item) => item.id === questID));
+
+        if (questIndex !== -1) {
+            const questItem = items[questIndex];
+            questItem.completed = true;
+
+            if (!archiveData[id]) archiveData[id] = {
+                categoryName, items: []
+            }
+
+            archiveData[id].items.push(questItem);
+            items.splice(questIndex, 1);
+
+            localStorage.setItem('quests', JSON.stringify(data));
+            localStorage.setItem('archive', JSON.stringify(archiveData));
+
+            return;
+        }
+    });
 }
