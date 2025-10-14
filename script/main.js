@@ -63,7 +63,8 @@ function loadPage(page) {
             break;
         case "history":
             title = 'Quests history'
-            path = 'previousQuests.html';
+            path = 'archivedQuests.html';
+            onLoadFunc = displayArchivedQuests;
             break;
         case "settings":
             title = 'Settings';
@@ -254,6 +255,61 @@ function displayActiveQuests() {
                 questItem.classList.add('complete');
                 setTimeout(() => { questItem.remove() }, 1200)
             });
+        });
+    });
+}
+
+/**
+ * Adds html elements to show archived quests
+ */
+function displayArchivedQuests() {
+    // Elements
+    const questListContainer = document.querySelector('#questListContainer');
+    questListContainer.innerHTML = '';
+
+    // Data
+    const data = getArchivedQuestsData();
+    const allCategoryIDs = Object.keys(data);
+
+    // For each category, add items in category
+    allCategoryIDs.forEach((id) => {
+        const { categoryName, items } = data[id];
+
+        // Skip if category contains no items
+        if (!items.length) {
+            return;
+        }
+
+        // Add category heading
+        const categoryNameHeading = document.createElement('h2');
+
+        categoryNameHeading.textContent = categoryName;
+        questListContainer.appendChild(categoryNameHeading);
+
+        // Add quest list 
+        const questList = document.createElement('ul');
+        questList.classList.add('questList');
+        questListContainer.appendChild(questList);
+
+        // Add each item in category
+        items.forEach((item) => {
+            // Quest list item - one for each quest
+            const questItem = document.createElement('li');
+            questList.appendChild(questItem);
+
+            // Quest description
+            const questDescription = document.createElement('div');
+            questDescription.classList.add('questDescription');
+            questDescription.textContent = item.description;
+            questItem.appendChild(questDescription);
+
+            // Quest completed image
+            const questCompleteImage = document.createElement('img');
+            // questCompleteImage.classList.add('questCompleteButton');
+            questCompleteImage.src = 'assets/assignment_turned_in.png';
+            questCompleteImage.classList.add('archived');
+
+            questItem.appendChild(questCompleteImage);
         });
     });
 }

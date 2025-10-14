@@ -231,6 +231,14 @@ main {
 
 .questList li.complete {
   transform: translateX(-1000px);
+  filter: hue-rotate(260deg) brightness(180%);
+}
+
+.questList img.archived {
+  padding: 1rem;
+  width: 32px;
+  height: 32px;
+  filter: hue-rotate(260deg) brightness(180%);
 }
 
 .questDescription {
